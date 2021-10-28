@@ -21,7 +21,7 @@ class Rect {
   }
 }
 
-const swapSizeDimmensions = size => new Size(size.height, size.width);
+const swapSizeDimmensions = (size) => new Size(size.height, size.width);
 
 const makeChildlessRect = ({ displayInsets, windowDims, placement }) => {
   switch (placement) {
