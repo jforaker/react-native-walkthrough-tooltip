@@ -51,7 +51,7 @@ const invertPlacement = (placement) => {
 };
 
 class Tooltip extends Component {
-  isMounted = false;
+  mounted = false;
 
   static defaultProps = {
     allowChildInteraction: true,
@@ -145,7 +145,7 @@ class Tooltip extends Component {
       this.updateWindowDims,
     );
 
-    this.isMounted = true;
+    this.mounted = true;
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -158,7 +158,7 @@ class Tooltip extends Component {
     const insetsChanged = !rfcIsEqual(prevState.displayInsets, displayInsets);
 
     if (contentChanged || placementChanged || becameVisible || insetsChanged) {
-      if (this.isMounted) {
+      if (this.mounted) {
         setTimeout(() => {
           this.measureChildRect();
         });
@@ -174,7 +174,7 @@ class Tooltip extends Component {
       this.dimensionsSubscription.remove();
     }
 
-    this.isMounted = false;
+    this.mounted = false;
     if (this.interactionPromise) {
       this.interactionPromise.cancel();
     }
